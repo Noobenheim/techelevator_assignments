@@ -123,13 +123,23 @@ You are encouraged to make "less" part of your standard command line toolkit.
 Did you remember to save "introduction-to-tools-exercise.txt"?
 
 $ git status
-<type or copy-paste the result here>
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ../introduction-to-tools-exercises.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
 
 $ git add -A
-<type or copy-paste the result here>
+✔ ~/workspace/danielpodobnik-java-blue/module-1/01_Introduction_Tools/student-exercise/java/java-helloworld [master|●1] 
 
 $ git commit -m "Good stopping point"
-<type or copy-paste the result here>
+[master ede3651] Good stopping point
+ 1 file changed, 21 insertions(+), 7 deletions(-)
 
 Note, you do not need to push this commit up to BitBucket at this time. The
 typical Git workflow is to make many small commits to your local repo while
@@ -145,8 +155,8 @@ along, and then at the end.
 ----
 
 $ cd src/main/java/com/techelevator
-$ <enter command to display present working directory>
-<type or copy-paste your present working directory here>
+$ pwd
+/Users/danielpodobnik/workspace/danielpodobnik-java-blue/module-1/01_Introduction_Tools/student-exercise/java/java-helloworld/src/main/java/com/techelevator
 
 
 ----
@@ -154,7 +164,7 @@ $ <enter command to display present working directory>
     path?
 ----
 
-<type your answer here>
+The command uses a relative path to access the children of your current working directory.
 
 
 ----
@@ -162,8 +172,11 @@ $ <enter command to display present working directory>
     your present working directory.
 ----
 
-$ <enter command to list all files and directories including dot-files and dot-directories>
-<type or copy-paste the result here>
+$ ls -la
+total 8
+drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 11:36 .
+drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 11:36 ..
+-rwxr-xr-x  1 danielpodobnik  staff  141 Sep 17 11:36 Helloworld.java
 
 
 ----
@@ -177,9 +190,12 @@ $ cp Helloworld.java Helloworld.java.backup
 The "cp" parameters are the name of the source file followed by the name of the
 destination file.
 
-$ <enter command to list all files and directories in order to confirm the creation of the backup file>
-<type or copy-paste the result here>
-
+$ ls -la
+total 16
+drwxr-xr-x  4 danielpodobnik  staff  128 Sep 17 14:30 .
+drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 11:36 ..
+-rwxr-xr-x  1 danielpodobnik  staff  141 Sep 17 11:36 Helloworld.java
+-rwxr-xr-x  1 danielpodobnik  staff  141 Sep 17 14:30 Helloworld.java.backup
 
 ----
 14. Rename "Helloworld.java.backup" to "Helloworld.java.copy" using the move
@@ -191,9 +207,12 @@ $ mv Helloworld.java.backup Helloworld.java.copy
 The "mv" parameters are the existing name of the file followed by the new name
 of the file.
 
-$ <enter command to list all files and directories in order to confirm the renaming of the file>
-<type or copy-paste the result here>
-
+$ ls -la
+total 16
+drwxr-xr-x  4 danielpodobnik  staff  128 Sep 17 14:30 .
+drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 11:36 ..
+-rwxr-xr-x  1 danielpodobnik  staff  141 Sep 17 11:36 Helloworld.java
+-rwxr-xr-x  1 danielpodobnik  staff  141 Sep 17 14:30 Helloworld.java.copy
 
 ----
 15. Let's call this a "feature complete" point in the exercises, and not only
