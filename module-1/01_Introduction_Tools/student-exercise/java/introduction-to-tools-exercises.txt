@@ -15,7 +15,7 @@ actual command from other text in Unix documentation.
     refer to?
 ----
 
-<type your response here>
+The ~ refers to the current user's home directory.
 
 ----
 3.  A good habit to develop, especially while you're developing your skills on
@@ -24,7 +24,7 @@ actual command from other text in Unix documentation.
 ----
 
 $ pwd
-<type or copy-paste the result here>
+/Users/danielpodobnik/workspace/danielpodobnik-java-blue/module-1/01_Introduction_Tools/student-exercise/java/java-helloworld
 
 The present working directory displayed should match the directory you changed
 to in Exercise 1.  Note, the two may not match at the very beginning if you
@@ -40,7 +40,13 @@ changes directory, and the "pwd" command reflects this.
 ----
 
 $ ls -la
-<type or copy-paste the result here>
+total 8
+drwxr-xr-x  5 danielpodobnik  staff   160 Sep 17 11:36 .
+drwxr-xr-x  6 danielpodobnik  staff   192 Sep 17 14:10 ..
+drwxr-xr-x  3 danielpodobnik  staff    96 Sep 17 11:36 database
+-rwxr-xr-x  1 danielpodobnik  staff  1091 Sep 17 11:36 pom.xml
+drwxr-xr-x  4 danielpodobnik  staff   128 Sep 17 11:36 src
+
 
 
 ----
@@ -48,14 +54,15 @@ $ ls -la
     Exercise 4 represent?
 ----
 
-<type your answer here>
+The "." refers to the current working directory.
+The ".." refers to the parent directory of the current working directory.
 
 ----
 6.  What are the names of the files, including any dot-files, displayed in the
     directory listing in Exercise 4?
 ----
 
-<type or copy-paste your answer here>
+-rwxr-xr-x  1 danielpodobnik  staff  1091 Sep 17 11:36 pom.xml
 
 
 ----
@@ -63,7 +70,10 @@ $ ls -la
     the directory listing in Exercise 4?
 ----
 
-<type or copy-paste your answer here>
+drwxr-xr-x  5 danielpodobnik  staff   160 Sep 17 11:36 .
+drwxr-xr-x  6 danielpodobnik  staff   192 Sep 17 14:10 ..
+drwxr-xr-x  3 danielpodobnik  staff    96 Sep 17 11:36 database
+drwxr-xr-x  4 danielpodobnik  staff   128 Sep 17 11:36 src
 
 
 ----
@@ -95,7 +105,11 @@ $ less database/pagila.sql
 
 You are encouraged to make "less" part of your standard command line toolkit.
 
-<type or copy-paste the first five lines of either file here>
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.0
 
 ----
 9.  This is good time to create a Git snapshot of your progress.  Usually,
