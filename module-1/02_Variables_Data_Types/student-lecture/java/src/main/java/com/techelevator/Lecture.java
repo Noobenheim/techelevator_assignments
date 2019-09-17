@@ -171,7 +171,7 @@ public class Lecture {
 		24. What is 1,000,000,000 * 3?
 		*/
 		
-		long answer24 = 1000000000*3;
+		long answer24 = 1_000_000_000L*3;
 
 		/*
 		25. Create a variable that holds a boolean called doneWithExercises and
@@ -181,7 +181,7 @@ public class Lecture {
 		boolean doneWithExercises = true;
 
 		/*
-		26. Now set doneWithExercise to true.
+		26. Now set doneWithExercises to true.
 		*/
 		
 		doneWithExercises = false;
