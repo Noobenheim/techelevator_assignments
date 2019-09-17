@@ -41,7 +41,13 @@ changes directory, and the "pwd" command reflects this.
 ----
 
 $ ls -la
-<type or copy-paste the result here>
+total 40
+drwxr-xr-x  6 tommedvitz  staff   204 Sep 17 15:26 .
+drwxr-xr-x  3 tommedvitz  staff   102 Sep 17 15:26 ..
+-rw-r--r--  1 tommedvitz  staff   727 Sep 17 15:26 .gitignore
+-rw-r--r--  1 tommedvitz  staff  3106 Sep 17 15:26 README.md
+-rwxr-xr-x  1 tommedvitz  staff  8319 Sep 17 15:33 introduction-to-tools-exercises.txt
+drwxr-xr-x  5 tommedvitz  staff   170 Sep 17 15:26 java-helloworld
 
 
 ----
@@ -49,7 +55,8 @@ $ ls -la
     Exercise 4 represent?
 ----
 
-<type your answer here>
+ . means "this directory"
+.. means "parent directory"
 
 ----
 6.  What are the names of the files, including any dot-files, displayed in the
