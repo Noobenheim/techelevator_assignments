@@ -25,7 +25,7 @@ Home directory! ARE YOU TOO GOOD FOR YOUR $HOME
 ----
 
 $ pwd
-<type or copy-paste the result here>
+/Users/tommedvitz/eclipse-workspace/techelevator-instructors-java-blue/module-1/01_Introduction_Tools/student-exercise/java
 
 The present working directory displayed should match the directory you changed
 to in Exercise 1.  Note, the two may not match at the very beginning if you
