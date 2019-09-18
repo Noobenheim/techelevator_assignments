@@ -10,7 +10,7 @@ public class Exercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
-		return false;
+		return !weekday || vacation;
 	}
 
 	/*
@@ -22,7 +22,8 @@ public class Exercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+		return !(aSmile^bSmile);
+		//return aSmile == bSmile;
 	}
 
 	/*
@@ -32,7 +33,7 @@ public class Exercises {
 	 sumDouble(2, 2) → 8
 	 */
 	public int sumDouble(int a, int b) {
-		return 0;
+		return a==b ? (a+b)*2 : a+b;
 	}
 
 	/*
@@ -45,7 +46,8 @@ public class Exercises {
 	 diff21(-10) → 31
 	 */
 	public int diff21(int n) {
-		return 0;
+		n = 21 - n;
+		return n < 0 ? Math.abs(n)*2 : n;
 	}
 
 	/*
