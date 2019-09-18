@@ -21,8 +21,8 @@ public class Exercises {
 	 monkeyTrouble(false, false) → true
 	 monkeyTrouble(true, false) → false
 	 */
-	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {		
+		return !(aSmile ^ bSmile);
 	}
 
 	/*
