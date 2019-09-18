@@ -222,17 +222,45 @@ drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 11:36 ..
     others on our teams.
 ----
 
-$ <enter the Git command to display status>
-<type or copy-paste the result here>
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
 
-$ <enter the Git command to "stage" all changes>
-<type or copy-paste the result here>
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
 
-$ <enter the Git command to save all "staged" changes>
-<type or copy-paste the result here>
+	modified:   ../../../../../../introduction-to-tools-exercises.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Helloworld.java.copy
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+$ git add -A
+✔ ~/workspace/danielpodobnik-java-blue/module-1/01_Introduction_Tools/student-exercise/java/java-helloworld/src/main/java/com/techelevator [master ↑·1|●2] 
+
+
+$ git commit -m "Feature Complete"
+[master 6950d50] Feature Complete
+ 2 files changed, 42 insertions(+), 14 deletions(-)
+ create mode 100755 module-1/01_Introduction_Tools/student-exercise/java/java-helloworld/src/main/java/com/techelevator/Helloworld.java.copy
+
 
 $ git push origin master
-<type or copy-paste the result here>
+Enumerating objects: 32, done.
+Counting objects: 100% (32/32), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (20/20), 2.36 KiB | 806.00 KiB/s, done.
+Total 20 (delta 7), reused 0 (delta 0)
+To https://bitbucket.org/te-pgh-cohort-4/danielpodobnik-java-blue.git
+   ab0ee52..6950d50  master -> master
+
 
 
 ----
@@ -243,8 +271,11 @@ $ rm Helloworld.java.copy
 
 The "rm" parameter is the name of the file to be deleted.
 
-$ <enter command to list all files and directories in order to confirm the file deletion>
-<type or copy-paste the result here>
+$ ls -la
+total 8
+drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 14:33 .
+drwxr-xr-x  3 danielpodobnik  staff   96 Sep 17 11:36 ..
+-rwxr-xr-x  1 danielpodobnik  staff  141 Sep 17 11:36 Helloworld.java
 
 
 ----
@@ -265,8 +296,8 @@ command line when that seems natural.
 
 Regardless of the option you chose, check your new location.
 
-$ <enter command to display present working directory>
-<type or copy-paste your present working directory here>
+$ pwd
+/Users/danielpodobnik/workspace/danielpodobnik-java-blue/module-1/01_Introduction_Tools/student-exercise/java/java-helloworld
 
 
 ----
@@ -275,9 +306,9 @@ $ <enter command to display present working directory>
 ----
 
 $ mkdir docs
-$ <enter the command to change directory to "docs" using a relative path>
-$ <enter command to display present working directory>
-<type or copy-paste your present working directory here>
+$ cd docs
+$ pwd
+/Users/danielpodobnik/workspace/danielpodobnik-java-blue/module-1/01_Introduction_Tools/student-exercise/java/java-helloworld/docs
 
 ----
 19. Create a new file name "readme.txt" using Visual Studio Code, and add the text
@@ -294,10 +325,26 @@ Don't forget to save the file in Visual Studio Code!
     work so it can be reviewed by an instructor.
 ----
 
-$ <enter the Git command to display status>
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
 
-$ <enter the Git command to "stage" all changes>
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
 
-$ <enter the Git command to save all "staged" changes>
+	deleted:    ../src/main/java/com/techelevator/Helloworld.java.copy
 
-$ <enter the Git command to save local repository to BitBucket>
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	./
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+$ git add -A
+
+$ git commit -m "Completed with student exercise!"
+
+$ git push origin master
