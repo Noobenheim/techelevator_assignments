@@ -6,12 +6,8 @@ public class Lecture {
     1. Return the created array
     */
     public int[] returnArray() {
-        int[] array = { 80, 8080, 443 };
-<<<<<<< HEAD
-        return array;
-=======
-        return null;
->>>>>>> master
+        int[] example = { 80, 8080, 443 };
+        return example;
     }
 
     /*
@@ -19,11 +15,7 @@ public class Lecture {
     */
     public int returnFirstElement() {
         int[] portNumbers = { 80, 8080, 443 };
-<<<<<<< HEAD
         return portNumbers[0];
-=======
-        return 1;
->>>>>>> master
     }
 
     /*
@@ -31,33 +23,21 @@ public class Lecture {
     */
     public int returnLastElement() {
         int[] portNumbers = { 80, 8080, 443 };
-<<<<<<< HEAD
-        return portNumbers[portNumbers.length-1];
-=======
-        return 1;
->>>>>>> master
+        return portNumbers[2];
     }
 
     /*
     4. Return the first element of the array from the parameters
     */
     public int returnFirstElementOfParam(int[] passedInArray) {
-<<<<<<< HEAD
         return passedInArray[0];
-=======
-        return 1;
->>>>>>> master
     }
 
     /*
     5. Return the last element of the array from the parameters
     */
     public int returnLastElementOfParam(int[] passedInArray) {
-<<<<<<< HEAD
-        return passedInArray[passedInArray.length-1];
-=======
-        return 1;
->>>>>>> master
+        return passedInArray[passedInArray.length - 1];
     }
 
     /*
@@ -65,28 +45,16 @@ public class Lecture {
        return it? There are a couple of different ways of doing this, what can you come up with?
     */
     public int returnVariableFromBlock(int number) {
-<<<<<<< HEAD
+
     	int result;
     	
-        { // A new block with scoped variables
-
+        {
             result = number * 5;
+        }
 
-        } // the result variable disappears here
-
-        return result; // We want to return result here. How?
-=======
-
-        { // A new block with scoped variables
-
-            int result = number * 5;
-
-        } // the result variable disappears here
-
-        return number; // We want to return result here. How?
->>>>>>> master
+        return result;
     }
-
+    
     /*
     7. What will the variable result be at the end of the method? Change the number in the logic expression so that
        it returns true.
@@ -99,11 +67,7 @@ public class Lecture {
             result *= multiplier;
         }
 
-<<<<<<< HEAD
-        return result == 50; // <-- Change the number to match result and make this be true
-=======
-        return result == 1; // <-- Change the number to match result and make this be true
->>>>>>> master
+        return result == 50;
     }
 
     /*
@@ -124,11 +88,7 @@ public class Lecture {
             double eight = five + three;
         }
 
-<<<<<<< HEAD
         return one;
-=======
-        return 0;
->>>>>>> master
     }
 
     /*
@@ -144,11 +104,7 @@ public class Lecture {
             counter++;
         }
 
-<<<<<<< HEAD
-        return counter == 4; // What should the number be to return true?
-=======
-        return counter == 1; // What should the number be to return true?
->>>>>>> master
+        return counter == 4;
     }
 
     /*
@@ -160,11 +116,7 @@ public class Lecture {
         int counter = 0;
 
         //     Start;       Keep going while         Increment by one;
-<<<<<<< HEAD
         for (int i = 0; i < arrayToLoopThrough.length; i++) {
-=======
-        for (int i = 1; i < arrayToLoopThrough.length; i++) {
->>>>>>> master
             counter += 1;
         }
 
@@ -180,11 +132,7 @@ public class Lecture {
         int counter = 0;
 
         //     Start;       Keep going while         Increment by one;
-<<<<<<< HEAD
         for (int i = 0; i < arrayToLoopThrough.length; i++) {
-=======
-        for (int i = 0; i <= arrayToLoopThrough.length; i++) {
->>>>>>> master
             counter = counter + 1;
         }
 
@@ -201,11 +149,7 @@ public class Lecture {
         int sum = 0;
 
         //     Start;       Keep going while       Increment by;
-<<<<<<< HEAD
         for (int i = 0; i < arrayToLoopThrough.length; i = i + 2) {
-=======
-        for (int i = 0; i < arrayToLoopThrough.length; i = i + 1) {
->>>>>>> master
             sum = sum + arrayToLoopThrough[i];
         }
 
