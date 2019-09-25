@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+		return new ArrayList<String>(Arrays.asList(stringArray));
 	}
 
 	/*
@@ -32,7 +33,7 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		return stringList.toArray(new String[stringList.size()]);
 	}
 
 	/*
@@ -43,7 +44,14 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> ret = new ArrayList<String>();
+		
+		for( String string : stringArray ) {
+			if( string.length() != 4 )
+				ret.add(string);
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -55,7 +63,17 @@ public class Exercises {
 		-> ["way", "the", "all", "jingle", "bells", "jingle", "bells", "jingle"]
 	 */
 	public List<String> reverseList(List<String> stringList) {
-		return null;
+		List<String> ret = new ArrayList<String>();
+		Stack<String> stringListCopy = new Stack<String>();
+		
+		for( String string : stringList )
+			stringListCopy.push(string);
+		
+		while( stringListCopy.size() > 0 ) {
+			ret.add(stringListCopy.pop());
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -65,7 +83,13 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> ret = new ArrayList<Double>();
+		
+		for( int number : intArray ) {
+			ret.add( (double)(number / 2) );
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -75,7 +99,15 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		if( integerList.size() == 0 ) return -1;
+		int ret = integerList.get(0);
+		
+		for( int number : integerList ) {
+			if( number > ret )
+				ret = number;
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -85,7 +117,15 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> ret = new ArrayList<Integer>();
+		
+		for( int number : integerArray ) {
+			if( number%2 == 1 ) {
+				ret.add(number);
+			}
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -96,7 +136,7 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+		return integerList.indexOf(intToFind) != integerList.lastIndexOf(intToFind);
 	}
 
 	/*
@@ -113,7 +153,20 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> ret = new ArrayList<String>();
+		
+		for( int number : integerArray ) {
+			if( number%3 == 0 && number%5 == 0 )
+				ret.add("FizzBuzz");
+			else if( number%3 == 0 )
+				ret.add("Fizz");
+			else if( number%5 == 0 )
+				ret.add("Buzz");
+			else
+				ret.add(Integer.toString(number));
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -124,7 +177,16 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> ret = new ArrayList<Integer>();
+		
+		for( int i=0; i < Math.max(listOne.size(), listTwo.size()); i++ ) {
+			if( i < listOne.size() )
+				ret.add(listOne.get(i));
+			if( i < listTwo.size() )
+				ret.add(listTwo.get(i));
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -137,7 +199,32 @@ public class Exercises {
 	 boardingGate( [0, -1, 44, 31, 17, 7, 27, 16, 26, 6] ) -> [7, 6, 17, 16, 27, 26]
 	 */
 	public List<Integer> boardingGate(List<Integer> seatNumberList) {
-		return null;
+		List<Integer> ret = new ArrayList<Integer>();
+		List<Queue<Integer>> sort = new ArrayList<Queue<Integer>>();
+		
+		for( int number : seatNumberList ) {
+			if( number <= 0 )
+				continue;
+			int index = number / 10;
+			if( number % 10 == 0 )
+				index--;
+			
+			while( index >= sort.size() ) {
+				sort.add(new LinkedList<Integer>());
+			}
+	
+			sort.get(index).offer(number);
+		}
+		
+		int row = 0;
+		for( Queue<Integer> list : sort ) {
+			if( row++ >= 3 ) break; // don't care about those ones
+			while( list.size() > 0 ) {
+				ret.add(list.poll());
+			}
+		}
+		
+		return ret;
 	}
 
 }
