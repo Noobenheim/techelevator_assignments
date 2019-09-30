@@ -17,8 +17,8 @@ public class Television {
 	public void turnOff() { this.isOn = false; }
 	public void turnOn() { 
 		this.isOn = true;
-		this.currentChannel = 3;
-		this.currentVolume = 2;
+		this.currentChannel = DEFAULT_CHANNEL;
+		this.currentVolume = DEFAULT_VOLUME;
 	}
 	public void changeChannel(int newChannel) {
 		if( !this.isOn() || !this.inChannelRange(newChannel) ) return;
