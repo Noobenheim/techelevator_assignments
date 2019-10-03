@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class FedEx implements DeliveryDriver {
+public class FexEd implements DeliveryDriver {
 	@Override
 	public double calculateRate(int distance, double weight) {
 		double rate = 20.00;
@@ -12,7 +12,7 @@ public class FedEx implements DeliveryDriver {
 
 	@Override
 	public String getName() {
-		return "FedEx";
+		return "FexEd";
 	}
 	
 	public String toString() {

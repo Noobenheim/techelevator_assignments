@@ -27,7 +27,7 @@ public class PostageCalculator {
 		drivers.add(new PostalService(PostalService.Class.FIRST));
 		drivers.add(new PostalService(PostalService.Class.SECOND));
 		drivers.add(new PostalService(PostalService.Class.THIRD));
-		drivers.add(new FedEx());
+		drivers.add(new FexEd());
 		drivers.add(new SPU(SPU.RateType.GROUND_4DAY));
 		drivers.add(new SPU(SPU.RateType.BUSINESS_2DAY));
 		drivers.add(new SPU(SPU.RateType.NEXT_DAY));
