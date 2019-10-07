@@ -68,4 +68,11 @@ public class KataRomanNumeralsTest {
 		Assert.assertEquals("M", KataRomanNumerals.convert(1000));
 		Assert.assertEquals("MMXIX", KataRomanNumerals.convert(2019));
 	}
+	
+	@Test
+	public final void test_numerals_to_digits() {
+		Assert.assertEquals(24, KataRomanNumerals.convertToDigit("XXIV"));
+		Assert.assertEquals(3, KataRomanNumerals.convertToDigit("III"));
+		Assert.assertEquals(1998, KataRomanNumerals.convertToDigit("MCMXCVII"));
+	}
 }

@@ -42,4 +42,8 @@ public class KataRomanNumerals {
 		
 		return output;
 	}
+	
+	public static int convertToDigit(String romanNumeral) {
+		return 0;
+	}
 }
