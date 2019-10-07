@@ -12,7 +12,6 @@ public class KataFizzBuzzTest {
 	}
 	
 	// Part 1
-	
 	@Test
 	public void test_one() {
 		Assert.assertEquals("1 should return \"1\"", "1", kfb.fizzBuzz(1));
