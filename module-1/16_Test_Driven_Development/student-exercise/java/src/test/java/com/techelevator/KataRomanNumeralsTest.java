@@ -73,6 +73,7 @@ public class KataRomanNumeralsTest {
 	public final void test_numerals_to_digits() {
 		Assert.assertEquals(24, KataRomanNumerals.convertToDigit("XXIV"));
 		Assert.assertEquals(3, KataRomanNumerals.convertToDigit("III"));
-		Assert.assertEquals(1998, KataRomanNumerals.convertToDigit("MCMXCVII"));
+		// in the README, it says 1998 but I checked and Google agrees MCMXCVII is 1997
+		Assert.assertEquals(1997, KataRomanNumerals.convertToDigit("MCMXCVII"));
 	}
 }

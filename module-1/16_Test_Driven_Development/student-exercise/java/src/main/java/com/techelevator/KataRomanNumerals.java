@@ -44,6 +44,15 @@ public class KataRomanNumerals {
 	}
 	
 	public static int convertToDigit(String romanNumeral) {
-		return 0;
+		int count = 0;
+		
+		for( Map.Entry<Integer, String> entry : chars.entrySet() ) {
+			while( romanNumeral.indexOf(entry.getValue()) == 0 ) {
+				count += entry.getKey();
+				romanNumeral = romanNumeral.substring(entry.getValue().length());
+			}
+		}
+		
+		return count;
 	}
 }
