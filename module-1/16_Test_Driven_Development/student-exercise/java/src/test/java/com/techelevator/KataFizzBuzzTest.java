@@ -29,8 +29,7 @@ public class KataFizzBuzzTest {
 	
 	@Test
 	public void test_fifteen() {
-		// commented this out for Part 2, since 15 contains a 5 it will always be "Buzz" even though it's also divisible by 3 (see test_fiftyone)
-		//Assert.assertEquals("15 should return \"FizzBuzz\"", "FizzBuzz", kfb.fizzBuzz(15));
+		Assert.assertEquals("15 should return \"FizzBuzz\"", "FizzBuzz", kfb.fizzBuzz(15));
 	}
 	
 	@Test

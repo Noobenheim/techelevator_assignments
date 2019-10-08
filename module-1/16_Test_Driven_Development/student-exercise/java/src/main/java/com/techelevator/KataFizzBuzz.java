@@ -12,6 +12,8 @@ public class KataFizzBuzz {
 		}
 		if( (number%5 == 0 && number > 0) ) {
 			output += "Buzz";
+			
+			return output;
 		}
 		
 		if( has5 ) {
