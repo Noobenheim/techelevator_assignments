@@ -33,17 +33,12 @@ public class KataPotter {
 	}
 	
 	private void removeBooks(int[] books, int count) {
-		System.out.println(count);
-		System.out.println("Start: "+Arrays.toString(books));
-		
 		for( int i=0; i<books.length && count > 0; i++ ) {
 			if( books[i] > 0 ) {
 				books[i]--;
 				count--;
 			}
 		}
-
-		System.out.println("End: "+Arrays.toString(books));
 	}
 	
 	private boolean hasBooks(int[] books) {
