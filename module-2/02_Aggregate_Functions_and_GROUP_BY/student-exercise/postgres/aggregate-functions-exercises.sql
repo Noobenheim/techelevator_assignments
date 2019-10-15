@@ -1,4 +1,4 @@
-﻿-- The following queries utilize the "world" database.
+-- The following queries utilize the "world" database.
 -- Write queries for the following problems. 
 -- Notes:
 --   GNP is expressed in units of one million US Dollars
@@ -13,6 +13,14 @@
 -- The results should be ordered alphabetically by state name and then by city 
 -- name. 
 -- (19 rows)
+SELECT name || ', ' ||district AS name_and_state, population
+FROM city 
+WHERE district IN ('Pennsylvania', 'West Virginia', 'Kentucky', 'Indiana', 'Michigan')
+ORDER BY district, name
+;
+
+
+
 
 -- 2. The name, country code, and region of all countries in Africa.  The name and
 -- country code should be returned as a single column named country_and_code 
