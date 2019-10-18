@@ -128,10 +128,16 @@ WHERE "title" = 'Euclidean PI';
 -- 12. Check database metadata to determine all constraints of the film id, and
 -- describe any remaining adjustments needed before the film "Euclidean PI" can
 -- be removed from the film table.
+SELECT "constraint_name", "tc"."table_name", "tc"."constraint_type" AS "Constraint Table", "ccu"."table_name" AS "Constraint Column Table", "column_name" AS "Constraint Column", "unique_constraint_name"
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS "tc"
+JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE "ccu" USING("constraint_name")
+JOIN INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS "rc" USING("constraint_name")
+WHERE "ccu"."table_name" = 'film';
 
 -- film_actor_film_id_fkey for "film_actor" needs to be resolved
 DELETE FROM "film_actor"
 WHERE "film_id" = (SELECT "film_id" FROM "film" WHERE "title" = 'Euclidean PI');
+-- film_category_film_id_fkey is also a foreign key constraint, but we removed that category in #11
 -- inventory_film_id_fkey for "inventory" needs to be resolved
 DELETE FROM "inventory"
 WHERE "film_id" = (SELECT "film_id" FROM "film" WHERE "title" = 'Euclidean PI');
