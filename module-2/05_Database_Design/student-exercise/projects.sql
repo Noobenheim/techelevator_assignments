@@ -96,7 +96,7 @@ INSERT INTO "employee_project" ("project_id", "employee_id")
 
 COMMIT;
 
-SELECT "project"."name" AS "project_name", "department"."name" AS "department_name", "employee_id", "first_name", "last_name", "gender", "birth_date", CAST(EXTRACT(YEAR FROM age("birth_date")) AS INT) AS "current_age", "hire_date", CAST(EXTRACT(YEAR FROM age("hire_date", "birth_date")) AS INT) AS "hire_age", CAST(EXTRACT(YEAR FROM age("hire_date")) AS INT) AS "hired_years_ago"
+SELECT "project"."name" AS "project_name", "department"."name" AS "department_name", "employee_id", "job_title"."name" AS "job_title", "first_name", "last_name", "gender", "birth_date", CAST(EXTRACT(YEAR FROM age("birth_date")) AS INT) AS "current_age", "hire_date", CAST(EXTRACT(YEAR FROM age("hire_date", "birth_date")) AS INT) AS "hire_age", CAST(EXTRACT(YEAR FROM age("hire_date")) AS INT) AS "hired_years_ago"
 FROM "employee"
 JOIN "department" USING("department_id")
 JOIN "job_title" USING("job_title_id")
