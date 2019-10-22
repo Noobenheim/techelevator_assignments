@@ -66,14 +66,16 @@ public class JDBCCityDAO implements CityDAO {
 
 	@Override
 	public void update(City city) {
-		// TODO Auto-generated method stub
-
+        String sqlUpdate = "UPDATE city " + 
+                "SET name = ?, countrycode = ?, district = ?, population = ? " +
+                "WHERE id = ?";
+jdbcTemplate.update(sqlUpdate, city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation(), city.getId());
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
-
+        String sqlDelete = "DELETE FROM city WHERE id = ?";
+        jdbcTemplate.update(sqlDelete, id);
 	}
 
 	private long getNextCityId() {
