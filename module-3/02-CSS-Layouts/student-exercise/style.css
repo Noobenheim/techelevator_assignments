@@ -12,3 +12,80 @@ html {
     font-size: 16px;
 }
 
+body {
+    margin: 10px 8%;
+    color: var(--grey);
+}
+
+header {
+    height: 16px;
+}
+header img {
+    max-height: 100%;
+}
+
+h1.headline {
+    padding: 0;
+    font-size: 51px;
+    margin: 0;
+    margin-top: 25px;
+}
+
+#student-grid {
+    display: grid;
+    grid-template-columns: [col1] 1fr [col2] 1fr [col3] 1fr;
+    grid-template-rows: [row1] auto [row2] auto [row3] auto;
+    column-gap: 50px;
+    row-gap: 20px;
+}
+
+#student-picture {
+    grid-column-start: col3;
+    grid-row-start: row1;
+}
+#student-picture img {
+    border-radius: 100%;
+}
+
+#student-quote {
+    grid-column: col1 / col3;
+    grid-row: row1;
+    display: flex;
+    align-items: center;
+}
+
+#student-quote h2 {
+    font-size: 21px;
+    line-height: 35px;
+}
+
+#student-contact {
+    grid-column-start: col3;
+    grid-row-start: row2;
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+}
+
+#student-profile {
+    grid-column: col1 / col3;
+    grid-row-start: row2;
+    font-size: 15px;
+}
+
+#experience {
+    grid-column: col1 / -1;
+    grid-row-start: row3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#experience > div {
+    width: 33%;
+    flex-grow: 0;
+    padding: 0 20px;
+}
+#experience > div > h3 {
+    color: var(--blue);
+}
