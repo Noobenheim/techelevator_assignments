@@ -31,8 +31,17 @@
 	</ul>
 </nav>
 
-<%--
-	REPLACE THIS COMMENT WITH YOUR UNORDERED LIST...
- --%>
+<ul>
+	<c:set var="prev" value="0" />
+	<c:set var="next" value="1" />
+	<c:forEach begin="1" end="${ param.max }" var="i" step="1">
+		<c:if test="${ i == prev+next }">
+	<li>${ prev+next }</li>
+			<c:set var="tmp" value="${ prev+next }" />
+			<c:set var="prev" value="${ next }" />
+			<c:set var="next" value="${ tmp }" />
+		</c:if>
+	</c:forEach>
+</ul>
 
 <c:import url="common/footer.jsp"></c:import>

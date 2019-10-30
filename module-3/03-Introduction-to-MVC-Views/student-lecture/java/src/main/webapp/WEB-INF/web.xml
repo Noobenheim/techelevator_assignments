@@ -17,7 +17,7 @@
   be mapped to (i.e. handled by) our Servlet -->
   <servlet-mapping>
     <servlet-name>helloServlet</servlet-name> <!-- must match the name from the <servlet> element -->
-    <url-pattern>/greeting</url-pattern> <!-- resource path relative to the application context -->
+    <url-pattern>/greeting/*</url-pattern> <!-- resource path relative to the application context -->
   </servlet-mapping>
   
 </web-app>
