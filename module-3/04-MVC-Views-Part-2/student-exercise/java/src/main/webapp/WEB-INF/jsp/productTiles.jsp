@@ -20,85 +20,48 @@
 		 of demonstration we've written it out so you can see it
 		 when you load the page up. -->
 
-		<!-- Standard Product -->
-		<div class="tile  ">
-			<!-- Link to the Detail page using the product id (e.g. products/detail?id=1) -->
-			<a class="product-image" href="#"> 
-				<img src="<c:url value="/images/product-images/grey-sofa.jpg" />" />
-			</a>
-			<div class="details">
-				<p class="name">
-					<a href="#">Grey Sofa</a>
-				</p>
+		<c:forEach items="${ products }" var="product">
+		<c:set var="soldOutClass" value="" />
+		<c:set var="soldOutBanner" value="" />
+		<c:if test="${ product.remainingStock <= 0 }">
+			<c:set var="soldOutClass" value=" sold-out" />
+			<c:set var="soldOutBanner" value="<span class=\"banner\">Sold Out</span>" />
+		</c:if>
+		<c:set var="topSellerClass" value="" />
+		<c:set var="topSellerBanner" value="" />
+		<c:if test="${ product.topSeller }">
+			<c:set var="topSellerClass" value=" top-seller" />
+			<c:set var="topSellerBanner" value="<span class=\"banner top-seller\">Top Seller!</span>" />
+		</c:if>
+			<!-- Standard Product -->
+			<div class="tile${ soldOutClass }${ topSellerClass }">${ soldOutBanner }${ topSellerBanner }
+				<!-- Link to the Detail page using the product id (e.g. products/detail?id=1) -->
+				<a class="product-image" href="detail?id=${ product.id }"> 
+					<img src="<c:url value="/images/product-images/${ product.imageName }" />" />
+				</a>
+				<div class="details">
+					<p class="name">${ product.name }</p>
 
-				<!-- .filled will make the star solid -->
-				<div class="rating">
-					<span class="filled">&#9734;</span> 
-					<span>&#9734;</span> 
-					<span>&#9734;</span>
-					<span>&#9734;</span> 
-					<span>&#9734;</span>
+					<!-- .filled will make the star solid -->
+					<div class="rating">
+					<c:forEach begin="1" end="5" var="i">
+						<c:set var="className" value="" />
+						<c:if test="${ i <= product.averageRating }">
+							<c:set var="className" value=" class=\"filled\"" />
+						</c:if>
+						<span${ className }>&#9734;</span>
+					</c:forEach>
+					</div>
+					
+				<c:if test="${ product.remainingStock > 0 && product.remainingStock <= 5 }">
+					<span class="product-alert">Only ${ product.remainingStock } left!</span>
+				</c:if>
+
+					<p class="price"><fmt:formatNumber value="${ product.price }" type="currency" /></p>
 				</div>
-
-				<p class="price">$939.00</p>
 			</div>
-		</div>
+		</c:forEach>
 
-		<!-- Add the .top-seller class if the product is considered a Top Seller -->
-		<div class="tile top-seller ">
-			<!-- Link to the Detail page using the product id (e.g. products/detail?id=1) -->
-			<a class="product-image" href="#"> 
-				<img src="<c:url value="/images/product-images/grey-sofa.jpg" />" />
-			</a>
-			<div class="details">
-				<p class="name">
-					<a href="#">Grey Sofa</a>
-				</p>
-
-				<!-- .filled will make the star solid -->
-				<div class="rating">
-					<span class="filled">&#9734;</span> 
-					<span class="filled">&#9734;</span>
-					<span class="filled">&#9734;</span> 
-					<span class="filled">&#9734;</span>
-					<span>&#9734;</span>
-				</div>
-
-				<!-- Add the Top Seller <br/> and product alert if the product is considered a Top Seller -->
-				<br />
-				<p class="product-alert">Top Seller</p>
-				<!-- Add the X remaining product alert if the remaining quantity is greater than 0, but less than or equal to 5 -->
-				<p class="product-alert">4 remaining!</p>
-				<p class="price">$930.00</p>
-			</div>
-		</div>
-
-		<!-- Add the .sold-out class if the Remaining Stock is 0 -->
-		<div class="tile  sold-out">
-			<!-- Add the Sold Out banner if the Remaining Stock is 0 -->
-			<span class="banner">Sold Out</span>
-
-			<!-- Link to the Detail page using the product id (e.g. products/detail?id=1) -->
-			<a class="product-image" href="#"> 
-				<img src="<c:url value="/images/product-images/grey-sofa.jpg" />" />
-			</a>
-			<div class="details">
-				<p class="name">
-					<a href="#">Grey Sofa</a>
-				</p>
-
-				<!-- .filled will make the star solid -->
-				<div class="rating">
-					<span class="filled">&#9734;</span> 
-					<span class="filled">&#9734;</span>
-					<span class="filled">&#9734;</span> 
-					<span class="filled">&#9734;</span>
-					<span>&#9734;</span>
-				</div>
-
-				<p class="price">$939.00</p>
-			</div>
-		</div>
 	</div>
 </div>
 

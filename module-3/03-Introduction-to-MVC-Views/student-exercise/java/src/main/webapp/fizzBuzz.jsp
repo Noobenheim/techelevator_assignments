@@ -27,21 +27,25 @@
 
 
 <main>
-	<ul>
+	<ul id="fizzbuzz">
 	<c:forEach begin="1" end="${ param.number }" var="i">
+	<c:set var="clazz" value="" />
 		<c:set var="output" value="${ i }" />
 		<c:choose>
 			<c:when test="${ i%3==0 && i%5==0 }">
 				<c:set var="output" value="FizzBuzz!" />
+				<c:set var="clazz" value="fizzbuzz" />
 			</c:when>
 			<c:when test="${ i%3==0 }">
 				<c:set var="output" value="Fizz!" />
+				<c:set var="clazz" value="fizz" />
 			</c:when>
 			<c:when test="${ i%5==0 }">
 				<c:set var="output" value="Buzz!" />
+				<c:set var="clazz" value="buzz" />
 			</c:when>
 		</c:choose>
-		<li>${ output }</li>
+		<li class="${ clazz }">${ output }</li>
 	</c:forEach>
 	</ul>
 </main>
