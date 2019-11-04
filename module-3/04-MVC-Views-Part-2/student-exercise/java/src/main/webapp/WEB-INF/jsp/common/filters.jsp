@@ -13,17 +13,59 @@
         page, the value of the `baseRoute` should be the route for products and on the tiles page, should be the
         route for tiles.
         -->
+<c:set var="appendCharPrice" value="?" />
+<c:url value="${ param.baseRoute }" var="price">
+	<c:if test="${ !empty param.minRating }">
+		<c:set var="appendCharPrice" value="&" />
+		<c:param name="minRating" value="${ param.minRating }" />
+	</c:if>
+	<c:if test="${ !empty param.category }">
+		<c:set var="appendCharPrice" value="&" />
+		<c:param name="category" value="${ param.category }" />
+	</c:if>
+</c:url>
+<c:set var="appendCharRating" value="?" />
+<c:url value="${ param.baseRoute }" var="rating">
+	<c:if test="${ ! empty param.maxPrice }">
+		<c:set var="appendCharRating" value="&" />
+		<c:param name="maxPrice" value="${ param.maxPrice }" />
+	</c:if>
+	<c:if test="${ ! empty param.minPrice }">
+		<c:set var="appendCharRating" value="&" />
+		<c:param name="minPrice" value="${ param.minPrice }" />
+	</c:if>
+	<c:if test="${ ! empty param.category }">
+		<c:set var="appendCharRating" value="&" />
+		<c:param name="category" value="${ param.category }" />
+	</c:if>
+</c:url>
+<c:set var="appendCharCategory" value="?" />
+<c:url value="${ param.baseRoute }" var="category">
+	<c:if test="${ ! empty param.maxPrice }">
+		<c:set var="appendCharCategory" value="&" />
+		<c:param name="maxPrice" value="${ param.maxPrice }" />
+	</c:if>
+	<c:if test="${ ! empty param.minPrice }">
+		<c:set var="appendCharCategory" value="&" />
+		<c:param name="minPrice" value="${ param.minPrice }" />
+	</c:if>
+	<c:if test="${ ! empty param.minRating }">
+		<c:set var="appendCharCategory" value="&" />
+		<c:param name="minRating" value="${ param.minRating }" />
+	</c:if>
+</c:url>
+
 <div id="filter-options">
 	<h3>Refine By</h3>
 	<ul>
-		<li><a href="?maxPrice=25">Under $25</a></li>
-		<li><a href="?maxPrice=50&minPrice=25">$25 to $50</a></li>
-		<li><a href="?minPrice=50">$50 &amp; Above</a></li>
+		<li><a href="${ price }${ appendCharPrice }maxPrice=25">Under $25</a></li>
+		<li><a href="${ price }${ appendCharPrice }maxPrice=50&minPrice=25">$25 to $50</a></li>
+		<li><a href="${ price }${ appendCharPrice }minPrice=50">$50 &amp; Above</a></li>
 	</ul>
 	<p>Avg. Review</p>
 	<ul>
 		<li>
-			<a class="rating" href="?minRating=4">
+			<a class="rating" href="${ rating }${ appendCharRating }minRating=4">
 				<span class="filled">&#9734;</span>
 				<span class="filled">&#9734;</span>
 				<span class="filled">&#9734;</span>
@@ -32,7 +74,7 @@
 			</a>
 		</li>
 		<li>
-			<a class="rating" href="?minRating=3">
+			<a class="rating" href="${ rating }${ appendCharRating }minRating=3">
 				<span class="filled">&#9734;</span>
 				<span class="filled">&#9734;</span>
 				<span class="filled">&#9734;</span>
@@ -41,7 +83,7 @@
 			</a>
 		</li>
 		<li>
-			<a class="rating" href="?minRating=2">
+			<a class="rating" href="${ rating }${ appendCharRating }minRating=2">
 				<span class="filled">&#9734;</span>
 				<span class="filled">&#9734;</span>
 				<span>&#9734;</span>
@@ -50,7 +92,7 @@
 			</a>
 		</li>
 		<li>
-			<a class="rating" href="?minRating=1">
+			<a class="rating" href="${ rating }${ appendCharRating }minRating=1">
 				<span class="filled">&#9734;</span>
 				<span>&#9734;</span>
 				<span>&#9734;</span>
@@ -61,9 +103,9 @@
 	</ul>
 	<p>Category</p>
 	<ul>
-		<li><a href="?category=Home">Home</a></li>
-		<li><a href="?category=Apparel">Apparel</a></li>
-		<li><a href="?category=Jewelry">Jewelry</a></li>
-		<li><a href="?category=Garden">Garden</a></li>
+		<li><a href="${ category }${ appendCharCategory }category=Home">Home</a></li>
+		<li><a href="${ category }${ appendCharCategory }category=Apparel">Apparel</a></li>
+		<li><a href="${ category }${ appendCharCategory }category=Jewelry">Jewelry</a></li>
+		<li><a href="${ category }${ appendCharCategory }category=Garden">Garden</a></li>
 	</ul>
 </div>

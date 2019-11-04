@@ -9,7 +9,7 @@
 <div id="card-page">
 	<c:import url="/WEB-INF/jsp/common/filters.jsp">
 		<%-- Modify the baseRoute to apply filters to the current route. --%>
-		<c:param name="baseRoute" value="#" />
+		<c:param name="baseRoute" value="" />
 	</c:import>
 
 	<div class="main-content">

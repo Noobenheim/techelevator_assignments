@@ -1,12 +1,15 @@
 package com.techelevator;
 
-import com.techelevator.dao.FilmDao;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.techelevator.dao.FilmDao;
+import com.techelevator.dao.model.Film;
 
 /**
  * FilmSearchController
@@ -17,12 +20,24 @@ public class FilmSearchController {
     @Autowired
     FilmDao filmDao;
 
-    public String showFilmSearchForm() {
-        return null;
+    @RequestMapping("/filmSearch")
+    public String showFilmSearchForm(ModelMap modelHolder) {
+    	List<String> genres = filmDao.getGenres();
+    	
+    	modelHolder.put("genres", genres);
+    	
+        return "filmList";
     }
 
-    public String searchFilms() {
-        return null;
+    @RequestMapping("/filmResult")
+    public String searchFilms(@RequestParam int minLength, @RequestParam int maxLength, @RequestParam String genre, ModelMap modelHolder) {
+    	List<Film> films = filmDao.getFilmsBetween(genre, minLength, maxLength);
+    	List<String> genres = filmDao.getGenres();
+    	
+    	modelHolder.put("genres", genres);
+    	modelHolder.put("films", films);
+    	
+        return "filmList";
     }
 
 }

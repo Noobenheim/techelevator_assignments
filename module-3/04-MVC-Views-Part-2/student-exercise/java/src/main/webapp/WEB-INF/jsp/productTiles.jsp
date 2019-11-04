@@ -8,7 +8,7 @@
 <div id="masonry-page">
 	<c:import url="/WEB-INF/jsp/common/filters.jsp">
 		<%-- Modify the baseRoute to apply filters to the current route. --%>
-		<c:param name="baseRoute" value="#" />
+		<c:param name="baseRoute" value="tiles" />
 	</c:import>
 
 	<!-- Container for all of the Products -->

@@ -38,6 +38,20 @@ public class JDBCFilmDao implements FilmDao {
         return matchingFilms;
     }
 
+	@Override
+	public List<String> getGenres() {
+		List<String> genres = new ArrayList<>();
+		
+		String genreSearchSql = "SELECT name FROM category";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(genreSearchSql);
+		
+		while( results.next() ) {
+			genres.add(results.getString("name"));
+		}
+		
+		return genres;
+	}
+
     private Film mapRowToFilm(SqlRowSet results) {
         Film filmRow = new Film();
         filmRow.setTitle(results.getString("title"));

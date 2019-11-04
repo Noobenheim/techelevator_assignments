@@ -14,4 +14,6 @@ public interface FilmDao {
      * @return a list of movie objects
      */
     public List<Film> getFilmsBetween(String genre, int minLength, int maxLength);
+    
+    public List<String> getGenres();
 }

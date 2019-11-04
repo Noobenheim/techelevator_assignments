@@ -16,5 +16,11 @@ textarea {
     max-width: 280px;
 }
 
+form div {
+	display: inline-block;
+	vertical-align: middle;
+}
 
-
+form select {
+	height: 26spx;
+}
