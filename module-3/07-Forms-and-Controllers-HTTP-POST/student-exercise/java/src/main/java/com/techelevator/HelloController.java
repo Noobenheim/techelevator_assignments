@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.model.Review;
 import com.techelevator.model.ReviewDao;
@@ -25,10 +26,12 @@ public class HelloController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.POST)
-	public String displayWriteReview(Review review, ModelMap map) {
+	public String displayWriteReview(Review review, RedirectAttributes flashScope) {
 		review.setDateSubmitted(LocalDateTime.now());
 		reviewDAO.save(review);
 		
-		return "redirect:/?newReviewID="+review.getId();
+		flashScope.addFlashAttribute("newReviewID", review.getId());
+		
+		return "redirect:/";
 	}
 }

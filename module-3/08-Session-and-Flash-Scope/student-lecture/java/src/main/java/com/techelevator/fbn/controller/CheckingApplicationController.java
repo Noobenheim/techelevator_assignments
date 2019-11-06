@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.fbn.model.CheckingAccountApplication;
 
@@ -67,7 +68,7 @@ public class CheckingApplicationController {
 	}
 
 	@RequestMapping(path = "/completeApplication", method = RequestMethod.POST)
-	public String processApplication(HttpSession session) {
+	public String processApplication(HttpSession session, RedirectAttributes flashScope) {
 
 		CheckingAccountApplication application = (CheckingAccountApplication) session
 				.getAttribute("customerApplication");

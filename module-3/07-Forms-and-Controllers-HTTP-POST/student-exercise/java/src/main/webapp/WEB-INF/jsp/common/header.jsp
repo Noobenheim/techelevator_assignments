@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="header">
-		<c:if test="${ param.newReviewID != null }">
+		<c:if test="${ newReviewID != null }">
 			<div id="top-banner">
 				Your review has been submitted!
 			</div>

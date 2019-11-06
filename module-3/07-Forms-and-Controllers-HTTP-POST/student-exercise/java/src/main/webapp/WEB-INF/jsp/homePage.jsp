@@ -7,7 +7,7 @@
 <div id="reviews">
 <c:forEach items="${ reviews }" var="review">
 <c:set var="newReviewClass" value="" />
-<c:if test="${ param.newReviewID eq review.id }">
+<c:if test="${ newReviewID eq review.id }">
 	<c:set var="newReviewClass" value=" new-review" />
 </c:if>
 <div class="reviewItem${ newReviewClass }">
