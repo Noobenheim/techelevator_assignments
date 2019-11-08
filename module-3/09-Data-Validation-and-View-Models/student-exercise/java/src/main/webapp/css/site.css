@@ -16,5 +16,7 @@ textarea {
     max-width: 280px;
 }
 
-
-
+.required:after {
+	content: "*";
+	color: #ff0000;
+}
