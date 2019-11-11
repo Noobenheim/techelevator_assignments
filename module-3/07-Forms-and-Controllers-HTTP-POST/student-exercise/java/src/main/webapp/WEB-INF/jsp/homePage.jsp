@@ -11,8 +11,8 @@
 	<c:set var="newReviewClass" value=" new-review" />
 </c:if>
 <div class="reviewItem${ newReviewClass }">
-	<div class="title">${ review.title }</div>
-	<div class="username">${ review.username }</div>
+	<div class="title"><c:out value="${ review.title }" escapeXml="true" /></div>
+	<div class="username"><c:out value="${ review.username }" escapeXml="true" /></div>
 	<fmt:parseDate value="${ review.dateSubmitted }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
 	<fmt:formatDate pattern="MMM d, y" value="${ parsedDateTime }" var="formattedDate"/>
 	<div class="date">${ formattedDate }</div>
@@ -23,7 +23,7 @@
 			</c:if>
 		</c:forEach>
 	</div>
-	<div class="text">${ review.text }</div>
+	<div class="text"><c:out value="${ review.text }" escapeXml="true" /></div>
 </div>
 </c:forEach>
 <c:if test="${ reviews.size() == 0 }">
@@ -32,6 +32,7 @@
 </div>
 </c:if>
 </div>
+<h1><a href="<c:url value="/writeReview" />">Write A Review!</a></h1>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp">
 </c:import>

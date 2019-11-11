@@ -13,7 +13,7 @@ import com.techelevator.model.Review;
 import com.techelevator.model.ReviewDao;
 
 @Controller
-public class HelloController {
+public class MainController {
 	
 	@Autowired
 	private ReviewDao reviewDAO;
@@ -33,5 +33,10 @@ public class HelloController {
 		flashScope.addFlashAttribute("newReviewID", review.getId());
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
+	public String displayWriteReviewForm() {
+		return "writeReview";
 	}
 }
