@@ -30,7 +30,16 @@ public class FilmSearchController {
     }
 
     @RequestMapping("/filmResult")
-    public String searchFilms(@RequestParam int minLength, @RequestParam int maxLength, @RequestParam String genre, ModelMap modelHolder) {
+    public String searchFilms(@RequestParam(required=false) Integer minLength, 
+    						  @RequestParam(required=false) Integer maxLength, 
+    						  @RequestParam String genre, 
+    						  ModelMap modelHolder) {
+    	if( minLength == null ) {
+    		minLength = Integer.MIN_VALUE;
+    	}
+    	if( maxLength == null ) {
+    		maxLength = Integer.MAX_VALUE;
+    	}
     	List<Film> films = filmDao.getFilmsBetween(genre, minLength, maxLength);
     	List<String> genres = filmDao.getGenres();
     	
