@@ -45,7 +45,7 @@ public class MortgageCalculatorIntegrationTestWithoutPageObject {
 	
 	@AfterClass
 	public static void closeWebBrowser() {
-		webDriver.close();
+		webDriver.quit();
 	}
 	
 	/* In order for Selenium to interact with a web page, it needs to be

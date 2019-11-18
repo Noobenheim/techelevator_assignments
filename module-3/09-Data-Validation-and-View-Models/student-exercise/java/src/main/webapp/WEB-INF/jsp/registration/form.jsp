@@ -45,7 +45,7 @@
 	</div>
 	<div class="form-group">
 		<form:label path="numberOfTickets"># of Tickets</form:label>
-		<form:input type="number" path="numberOfTickets" placeholder="enter number of tickets" required="required" class="form-control" />
+		<form:input type="number" path="numberOfTickets" min="1" max="10" placeholder="enter number of tickets" required="required" class="form-control" />
 		<form:errors path="numberOfTickets" cssClass="error" />
 	</div>
 	<div class="form-group">
