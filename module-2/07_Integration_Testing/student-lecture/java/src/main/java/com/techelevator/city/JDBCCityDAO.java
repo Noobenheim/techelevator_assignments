@@ -1,6 +1,7 @@
 package com.techelevator.city;
 
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -20,11 +21,20 @@ public class JDBCCityDAO implements CityDAO {
 
 	@Override
 	public void save(City newCity) {
-		String sqlInsertCity = "INSERT INTO city(id, name, countrycode, district, population) "
-				+ "VALUES(?, ?, ?, ?, ?)";
-		newCity.setId(getNextCityId());
-		jdbcTemplate.update(sqlInsertCity, newCity.getId(), newCity.getName(), newCity.getCountryCode(),
-				newCity.getDistrict(), newCity.getPopulation());
+		if(newCity.getId() == null) {
+			String sqlInsertCity = "INSERT INTO city(id, name, countrycode, district, population) " +
+								   "VALUES(DEFAULT, ?, ?, ?, ?) " +
+								   "RETURNING id";
+			
+			
+			// Put newCity into the Database
+			SqlRowSet result = jdbcTemplate.queryForRowSet(sqlInsertCity, newCity.getName(), newCity.getCountryCode(), newCity.getDistrict(), newCity.getPopulation());
+			
+			// Give newCity object the corresponding ID
+			result.next(); // advance cursor to the first (and only) row of actual data
+			long id = result.getLong("id"); // get the value, which is a long
+			newCity.setId(id);
+		}
 	}
 
 	@Override
@@ -75,7 +85,7 @@ public class JDBCCityDAO implements CityDAO {
 		// TODO Auto-generated method stub
 
 	}
-
+/*
 	private long getNextCityId() {
 		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('seq_city_id')");
 		if (nextIdResult.next()) {
@@ -84,7 +94,7 @@ public class JDBCCityDAO implements CityDAO {
 			throw new RuntimeException("Something went wrong while getting an id for the new city");
 		}
 	}
-
+*/
 	private City mapRowToCity(SqlRowSet results) {
 		City theCity;
 		theCity = new City();

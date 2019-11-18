@@ -15,6 +15,12 @@ public class CheckingAccountApplication {
 	private String addressState;
 	private String addressZip;
 
+	@Override
+	public String toString() {
+		String output = firstName + " " + lastName + ", who lives at " + addressStreet + " " + addressCity + ", " + addressState + ", applied for an account.";
+		return output;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}

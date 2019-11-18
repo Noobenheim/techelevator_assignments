@@ -45,5 +45,5 @@ public class City {
 
 	public void setPopulation(int population) {
 		this.population = population;
-	}
+	}	
 }
