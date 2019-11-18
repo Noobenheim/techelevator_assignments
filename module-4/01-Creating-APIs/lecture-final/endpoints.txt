@@ -1,0 +1,10 @@
+Try going to (GET):
+
+http://localhost:8080/46-Creating-APIs-lecture/actors
+http://localhost:8080/46-Creating-APIs-lecture/api/actors
+http://localhost:8080/46-Creating-APIs-lecture/api/actors/123
+
+Using Postman, test out the other routes:
+POST http://localhost:8080/46-Creating-APIs-lecture/api/actors
+PUT http://localhost:8080/46-Creating-APIs-lecture/api/actors
+DELETE http://localhost:8080/46-Creating-APIs-lecture/api/actors/1000
