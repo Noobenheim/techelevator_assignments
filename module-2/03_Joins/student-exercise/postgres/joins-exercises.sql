@@ -142,6 +142,22 @@ JOIN "rental" "r" ON "r"."inventory_id" = "i"."inventory_id"
 JOIN "payment" "p" ON "p"."rental_id" = "r"."rental_id"
 GROUP BY "s"."store_id", "a"."address";
 
+ 
+--SELECT *
+SELECT s.store_id, SUM(p.amount), COUNT(r.rental_id)
+FROM store s
+INNER JOIN address a USING (address_id)
+--LEFT JOIN customer c USING(store_id)
+INNER JOIN inventory i USING(store_id)
+INNER JOIN rental r USING(inventory_id)
+INNER JOIN payment p USING(rental_id)
+GROUP BY store_id
+;
+
+
+
+
+
 -- 16. The top ten film titles by number of rentals
 -- (#1 should be “BUCKET BROTHERHOOD” with 34 rentals and #10 should have 31 rentals)
 SELECT "f"."title", COUNT(*)

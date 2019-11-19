@@ -22,7 +22,7 @@ public class CheckingApplicationController {
 		return "checkingApplication/personalInformationInput";
 	}
 
-	@RequestMapping(path = "/personalInformationInput", method = RequestMethod.POST)
+	@RequestMapping(path = "/personalInformationInput-ORIGINAL", method = RequestMethod.POST)
 	public String processPersonalInformationInput(@RequestParam String firstName, @RequestParam String lastName,
 			@DateTimeFormat(pattern = "MM/dd/yyyy") @RequestParam LocalDate dateOfBirth,
 			@RequestParam String stateOfBirth, @RequestParam String emailAddress, @RequestParam String phoneNumber,
@@ -41,14 +41,20 @@ public class CheckingApplicationController {
 		return "redirect:/checkingApplication/addressInput";
 	}
 
+	@RequestMapping(path = "/personalInformationInput", method = RequestMethod.POST)
+	public String processPersonalInformationInputFancy(CheckingAccountApplication application, HttpSession session) {
+		session.setAttribute("customerApplication", application);
+		return "redirect:/checkingApplication/addressInput";
+	}
+
 	@RequestMapping(path = "/addressInput", method = RequestMethod.GET)
 	public String displayAddressInput() {
 		return "checkingApplication/addressInput";
 	}
 
 	@RequestMapping(path = "/addressInput", method = RequestMethod.POST)
-	public String processAddressInput(@RequestParam String streetAddress, @RequestParam String apartmentNumber,
-			@RequestParam String city, @RequestParam String state, @RequestParam String zipCode, HttpSession session) {
+	public String processAddressInput(String streetAddress, String apartmentNumber,
+			String city, String state, String zipCode, HttpSession session) {
 
 		CheckingAccountApplication application = (CheckingAccountApplication) session
 				.getAttribute("customerApplication");
@@ -75,6 +81,8 @@ public class CheckingApplicationController {
 
 		/* This is where we would do something useful with the application,
 		 * such as save it to a database. */
+		System.out.println("RECEIVED APPLICATION!");
+		System.out.println(application);
 
 		return "redirect:/checkingApplication/thankYou";
 	}

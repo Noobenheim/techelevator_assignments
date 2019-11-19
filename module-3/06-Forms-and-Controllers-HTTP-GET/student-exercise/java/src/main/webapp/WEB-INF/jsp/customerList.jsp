@@ -2,6 +2,8 @@
 
 <c:set var="pageTitle" value="All Customers List"/>
 
+
+
 <%@include file="common/header.jspf"%>
 
 <form method="GET" action="customerResult">

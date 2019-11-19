@@ -10,6 +10,10 @@ INSERT INTO "countrylanguage"
 --("countrycode", "language", "isofficial", "percentage")
 VALUES('GBR', 'Klingon', false, 0.001);
 
+SELECT * 
+FROM countrylanguage
+WHERE countrycode = 'GBR'
+;
 
 -- UPDATE
 

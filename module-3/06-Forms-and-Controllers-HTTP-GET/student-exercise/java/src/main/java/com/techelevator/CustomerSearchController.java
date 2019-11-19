@@ -16,6 +16,25 @@ public class CustomerSearchController {
 
     @Autowired
     private CustomerDao customerDao;
+    
+    
+    @RequestMapping(path = "/customerSearch", method = RequestMethod.GET)
+    public String showCustomerSearchForm() {
+    	System.out.println("Displaying empty form");
+    	
+    	return "customerList";
+    }
+    
+    @RequestMapping(path = "/customerSearchResults", method = RequestMethod.GET)
+    public String showCustomerSearchResults(@RequestParam String customerName, @RequestParam String sortBy, ModelMap m) {
+    	System.out.println("Got search data");
+
+    	if(!customerName.isEmpty()) {
+    		List<Customer> customers = customerDao.searchAndSortCustomers(customerName, sortBy);
+    		m.put("customers", customers);
+    	}
+    	return "customerList";
+    }
 
     @RequestMapping("/customerSearch")
     public String showCustomerSearchForm(ModelMap modelHolder) {

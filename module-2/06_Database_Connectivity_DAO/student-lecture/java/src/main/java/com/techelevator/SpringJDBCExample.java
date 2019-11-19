@@ -24,28 +24,38 @@ public class SpringJDBCExample {
 		
 		
 		/* The JdbcTemplate can be used to execute parameterized SQL statements */
-		String sqlFilmsByCategory =  "SELECT film.title, film.release_year "+
-									 "FROM film JOIN film_category ON film.film_id = film_category.film_id "+
-									 "JOIN category ON category.category_id = film_category.category_id "+
+		String sqlFilmsByCategory =  "SELECT film.title, film.release_year " +
+									 "FROM film JOIN film_category ON film.film_id = film_category.film_id " +
+									 "JOIN category ON category.category_id = film_category.category_id " +
 									 "WHERE category.name = ?";
 		
 		/* The first parameter to the "queryForRowSet" method is a String containing a parameterized SQL statement
 		 * Any following parameters are used to replace query placeholders (i.e. '?') in the order in which they appear */
-		String category = "Comedy";
+		String category = "Comedy";		
 		SqlRowSet results = dvdstoreJdbcTemplate.queryForRowSet(sqlFilmsByCategory, category);
 		
+		
+		
 		System.out.println(category+" Films:");
-		while(results.next()) {  // The "next" method advances the cursor to the next row.  If a row exists, it returns true, otherwise false
-			String filmTitle = results.getString("title");  // this is the title column from teh SELECT statment above
-			int releaseYear = results.getInt("release_year");
-			System.out.println(filmTitle+" ("+releaseYear+")");
+		
+		while(false && results.next()) {  // The "next" method advances the cursor to the next row.  
+								 //  If a row exists, it returns true, otherwise false
+			
+			String filmTitle = results.getString("title");  // this is the title column from the SELECT statement above
+			int releaseYear = results.getInt("release_year");			
+			System.out.println(filmTitle + " ("+releaseYear+")");
 		}
+
+		
 		
 		/* use the "update" method to run INSERT, UPDATE, and DELETE statements */
 		String sqlCreateActor = "INSERT INTO actor(actor_id, first_name, last_name) "+
 								"VALUES (?, ?, ?)";
 		
-		dvdstoreJdbcTemplate.update(sqlCreateActor, 1000, "Craig", "Castelaz");
+//		int r = dvdstoreJdbcTemplate.update(sqlCreateActor, 1001, "Craig", "Castelaz");
+
+//		System.out.println("Inserted " + r + " row" + (r != 1 ? "s" : ""));
+		
 		
 		/* The next example makes use of the world database, so we need a new 
 		 * DataSource for creating connections to that database. */
@@ -67,7 +77,7 @@ public class SpringJDBCExample {
 		results.next(); // advances to the first row
 		int id = results.getInt(1); // returns the integer value of the first column (i.e. index 1)
 		System.out.println("New city id: "+id);
-		
+
 		/*
 		 * Now create a new city record using the generated id 
 		 */

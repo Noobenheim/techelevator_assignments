@@ -39,6 +39,16 @@ SELECT COUNT("code") AS "1991 Independence" FROM "country" WHERE "indepyear" = 1
 -- Count the number of countries where each language is spoken, ordered from most countries to least
 SELECT "language", COUNT("language") AS "language count" FROM "countrylanguage" GROUP BY "language" ORDER BY "language count" DESC;
 
+SELECT * FROM countrylanguage;
+
+SELECT language, COUNT(*) AS num_of_countries
+FROM countrylanguage
+
+GROUP BY language
+ORDER BY num_of_countries DESC
+;
+
+
 -- Average life expectancy of each continent ordered from highest to lowest
 SELECT "continent", COALESCE(AVG("lifeexpectancy"),0) AS "Average Life Expectancy" FROM "country" GROUP BY "continent" ORDER BY "Average Life Expectancy" DESC;
 
@@ -51,6 +61,13 @@ SELECT "district", SUM("population") FROM "city" WHERE "countrycode" = 'USA' GRO
 -- The average population of cities in each state in the USA ordered by state name
 SELECT "district", AVG("population") FROM "city" WHERE "countrycode" = 'USA' GROUP BY "district" ORDER BY "district";
 
+SELECT district, CAST(AVG(population) AS int) AS avg_ppl 
+FROM city
+WHERE countrycode = 'USA'
+GROUP BY district
+ORDER BY district
+;
+
 -- SUBQUERIES
 -- Find the names of cities under a given government leader
 SELECT "name", "headofstate"
@@ -58,6 +75,14 @@ FROM "city",
      (SELECT DISTINCT "code", "headofstate" FROM "country" WHERE "headofstate" IS NOT NULL AND "headofstate" <> '') AS hoslist
 WHERE "countrycode" = "code"
 ;
+
+
+
+SELECT city.name, country.headofstate
+FROM city JOIN country ON city.countrycode = country.code
+
+;
+
 
 
 
@@ -70,6 +95,22 @@ WHERE "countrycode" IN (
         WHERE "indepyear" IS NULL
 );
 
+
+
+
+  SELECT code 
+  FROM country
+  WHERE indepyear IS NULL;
+
+SELECT name, countrycode 
+FROM city
+WHERE countrycode IN (
+    SELECT code 
+    FROM country
+    WHERE indepyear IS NULL
+  )
+ORDER BY countrycode
+;
 
 
 
@@ -87,12 +128,27 @@ WHERE "countrycode" IN (
 -- Aggregate functions provide the ability to COUNT, SUM, and AVG, as well as determine MIN and MAX. Only returns a single row of value(s) unless used with GROUP BY.
 
 -- Counts the number of rows in the city table
+SELECT name, COUNT(*)
+FROM city
+GROUP BY name
+ORDER BY count DESC
+;
+
 
 -- Also counts the number of rows in the city table
 
 -- Gets the SUM of the population field in the city table, as well as
 -- the AVG population, and a COUNT of the total number of rows.
+SELECT SUM(population), AVG(population), COUNT(population)
+FROM city;
+
 
 -- Gets the MIN population and the MAX population from the city table.
+SELECT name, population
+FROM city 
+WHERE population = (
+  SELECT MAX(population) FROM city
+);
+
 
 -- Using a GROUP BY with aggregate functions allows us to summarize information for a specific column. For instance, we are able to determine the MIN and MAX population for each countrycode in the city table.
