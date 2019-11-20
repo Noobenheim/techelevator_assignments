@@ -10,8 +10,24 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const daysPerWeek = 7;
+  console.log(`There are ${daysPerWeek} days in the week.`);
+
   // Declares a variable those value can be changed
+  let daysPerMonth = 30;
+  daysPerMonth = 15;
+
   // Declares a variable that will always be an array
+  let weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  console.table(weekdays);
 }
 
 /**
@@ -78,6 +94,13 @@ function objects() {
   // Log the first and last name
 
   // Log each employee
+
+  console.log(i);
+  for( var i=0; i<person.employees.length; i++ ) {
+
+  }
+  console.log(i);
+
 }
 
 /*
@@ -94,8 +117,14 @@ function Add(num1, num2) {
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
-  return num1 + num2 + num3;
+function Add(num1, num2) {
+  let addition = num1 + num2;
+  if( arguments.length > 0 ) {
+    for( let num3 of arguments ) {
+      addition += num3;
+    }
+  }
+  return addition;
 }
 
 /*
