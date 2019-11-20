@@ -11,6 +11,29 @@
 		iqTest("") → 0 // there are no numbers in the given set
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
+function iqTest(str) {
+    console.log(str);
+    if( str.length == 0 ) return 0;
+    let split = str.split(" ");
+
+    let countEven = 0;
+
+    for( let val of split ) {
+        if( val%2==0 ) countEven++;
+    }
+    
+    if( countEven == split.length || countEven == 0 ) {
+        return 0;
+    }
+
+    let search = countEven==1?0:1;
+
+    for( let i in split ) {
+        if( split[i]%2==search ) {
+            return parseInt(i)+1;
+        }
+    }
+}
 
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
@@ -28,3 +51,33 @@ argument is unused.
 		titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
+function titleCase(str, minor) {
+    let ret = "";
+    let split = str.split(" ");
+    let minorSplit = new Array();
+    if( minor != undefined )
+        minorSplit = minor.split(" ");
+    // always do first
+    ret = _titleCaseWord(split[0]);
+
+    for( let i=1; i<split.length; i++ ) {
+        let found = false;
+        for( let minor of minorSplit ) {
+            if( minor.toLowerCase() == split[i].toLowerCase() ) {
+                found = true;
+                break;
+            }
+        }
+        if( found ) {
+            ret += ` ${split[i].toLowerCase()}`;
+        } else {
+            ret += ` ${_titleCaseWord(split[i])}`;
+        }
+    }
+
+    return ret;
+}
+
+function _titleCaseWord(str) {
+    return str.substr(0,1).toUpperCase() + str.substr(1).toLowerCase();
+}
