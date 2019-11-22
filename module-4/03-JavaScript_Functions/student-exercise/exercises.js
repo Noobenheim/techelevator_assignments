@@ -134,7 +134,7 @@ function makeHappy(arr) {
  * Joins the address information with spaces between
  * 
  * @param {object[]} objs Objects of streetNumber, streetName, streetType, city, state, and zip properties 
- * @returns an array of Strings
+ * @returns {String[]} an array of Strings with the obj information joined by spaces
  */
 function getFullAddressesOfProperties(objs) {
   return objs.map((obj) => {
@@ -152,7 +152,7 @@ function getFullAddressesOfProperties(objs) {
  * Takes in an array and returns the largest element in the array
  * 
  * @param {object[]} arr Array of numbers/Strings
- * @returns largest number in array
+ * @returns {number} largest number in array
  */
 function findLargest(arr) {
   if( arr == undefined || arr.length == 0 ) return null;
@@ -183,6 +183,12 @@ function findLargest(arr) {
  * calls with two anonymous functions.
  *
  * Read the tests to verify you have the correct behavior.
+ */
+/**
+ * Takes in an array of arrays and adds all values contained
+ * 
+ * @param {number[][]} arr A two-dimensional array of numbers to add
+ * @returns {number} 0 if arr is undefined, or the sum of all numbers
  */
 function getSumOfSubArrayValues(arr) {
   if( arr == undefined ) return 0;
