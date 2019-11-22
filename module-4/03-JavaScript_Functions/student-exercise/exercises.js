@@ -1,5 +1,10 @@
-/*
- * Document this function
+/**
+ * Function to see if the location is summer depending on
+ * where it is and what day/month it is
+ * 
+ * @param {number} month month number from 1-12
+ * @param {number} day day of month
+ * @param {String} hemisphere either northern or southern hemisphere
  */
 function isSummer(month, day = 1, hemisphere = 'northern') {
   if (month === 7 || month === 8) {
@@ -40,6 +45,13 @@ function isSummer(month, day = 1, hemisphere = 'northern') {
  * @param {boolean} [recommendation=false] does the student have a recommendation
  * @returns {boolean} true if they are admitted
  */
+function isAdmitted(gpa, satScore=0, recommendation=false) {
+  if( gpa > 4 ) return true;
+  if( satScore > 1300 ) return true;
+  if( gpa > 3 && recommendation ) return true;
+  if( satScore > 1200 && recommendation ) return true;
+  return false;
+}
 
 /**
  * Write a function called useParameterToFilterArray so that it takes an anonymous
@@ -49,6 +61,9 @@ function isSummer(month, day = 1, hemisphere = 'northern') {
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+function useParameterToFilterArray(filterFunction) {
+  return unfilteredArray.filter(filterFunction);
+}
 
 /**
  * Write a function called makeNumber to take two strings
@@ -62,6 +77,9 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+function makeNumber(first, second='') {
+    return parseInt(first+second);
+}
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
@@ -70,12 +88,30 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {...number} num a series of numbers to add together
  * @returns {number} the sum of all the parameters (or arguments)
  */
+function addAll() {
+  let sum = 0;
+  for( let argument of arguments ) {
+    sum += argument;
+  }
+  return sum;
+}
 
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+/**
+ * Prepends Happy to the beginning of each String in the array
+ * 
+ * @param {String[]} arr Array of Strings 
+ * @returns {String[]} Array of Strings with Happy prepended
+ */
+function makeHappy(arr) {
+  return arr.map((current)=>{
+    return "Happy "+current;
+  });
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -94,6 +130,17 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *
  * Use `map` and an anonymous function.
  */
+/**
+ * Joins the address information with spaces between
+ * 
+ * @param {object[]} objs Objects of streetNumber, streetName, streetType, city, state, and zip properties 
+ * @returns an array of Strings
+ */
+function getFullAddressesOfProperties(objs) {
+  return objs.map((obj) => {
+    return `${obj.streetNumber} ${obj.streetName} ${obj.streetType} ${obj.city} ${obj.state} ${obj.zip}`;
+  });
+}
 
 /*
  * Create and document a function called findLargest.
@@ -101,6 +148,24 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * Using `forEach`, find the largest element in an array.
  * It should work for strings and numbers.
  */
+/**
+ * Takes in an array and returns the largest element in the array
+ * 
+ * @param {object[]} arr Array of numbers/Strings
+ * @returns largest number in array
+ */
+function findLargest(arr) {
+  if( arr == undefined || arr.length == 0 ) return null;
+  let largest = arr[0];
+
+  arr.forEach((num)=>{
+    if( largest < num ) {
+      largest = num;
+    }
+  });
+
+  return largest;
+}
 
 /*
  * CHALLENGE
@@ -119,3 +184,11 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *
  * Read the tests to verify you have the correct behavior.
  */
+function getSumOfSubArrayValues(arr) {
+  if( arr == undefined ) return 0;
+  return arr.reduce((reducer1, current1) => {
+    return reducer1 + current1.reduce((reducer2, current2)=>{
+      return reducer2+current2;
+    }, 0);
+  }, 0);
+}

@@ -25,6 +25,9 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function multiplyTogether(first, second) {
+  return first*second;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -36,6 +39,9 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+function multiplyTogether(first=0, second=0) {
+  return first*second;
+}
 
 /**
  * Scope is defined as where a variable is available to be used.
