@@ -37,5 +37,35 @@ function displayGroceries() {
   });
 }
 
-setPageTitle();
-displayGroceries();
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+
+  let elements = document.getElementsByTagName("li");
+  for( let element of elements ) {
+    element.addEventListener("click", (event)=>{
+      if( !event.target.classList.contains("completed")) {
+        event.target.classList.add("completed");
+      }
+    });
+    element.addEventListener("dblclick", (event)=>{
+      if( event.target.classList.contains("completed")) {
+        event.target.classList.remove("completed");
+      }
+    });
+  }
+  let btn = document.getElementById("toggleAll");
+  btn.addEventListener("click", (event)=>{
+    let elements = document.getElementsByTagName("li");
+    for( let element of elements ) {
+      console.log(element);
+      if( allItemsIncomplete ) {
+        element.classList.add("completed");
+      } else {
+        element.classList.remove("completed");
+      }
+    }
+    event.target.innerText = "Mark all "+(allItemsIncomplete?"Inc":"C")+"omplete";
+    allItemsIncomplete = !allItemsIncomplete;
+  });
+});
