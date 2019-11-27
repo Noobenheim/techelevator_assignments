@@ -10,12 +10,14 @@ function buildRow(data) {
     nameCell.innerText = data.Title;
     yearCell.innerText = data.Year;
 
-    img.src = data.Poster;
-    img.setAttribute('class','img-responsive');
-    img.setAttribute('class','img-thumbnail');
+    if( data.Poster != "N/A" ) {
+        img.src = data.Poster;
+        img.setAttribute('class','img-responsive');
+        img.setAttribute('class','img-thumbnail');
 
-    posterCell.setAttribute('class','col-sm-2');
-    posterCell.append(img);
+        posterCell.setAttribute('class','col-sm-2');
+        posterCell.append(img);
+    }
 
     tr.append(posterCell);
     tr.append(imdbCell);
@@ -24,3 +26,48 @@ function buildRow(data) {
 
     return tr; 
 };
+
+document.addEventListener("DOMContentLoaded", (event)=>{
+    const searchButton = document.getElementById("btnSearch");
+    const text = document.getElementById("movie");
+
+    searchButton.addEventListener("click", (event)=>{
+        startSearch();
+    });
+    text.addEventListener("keypress", (event)=>{
+        if( event.key == "Enter" ) {
+            startSearch();
+        }
+    });
+});
+
+function startSearch() {
+    const table = document.getElementById("movieData");
+    const text = document.getElementById("movie");
+    const searchButton = document.getElementById("btnSearch");
+
+    const url = "http://www.omdbapi.com/?apikey=3c047b89&s=";
+
+    const originalText = searchButton.innerText;
+
+    searchButton.innerText = "Loading...";
+    searchButton.disabled = true;
+
+    fetch(url+text.value).then( response=>response.json() ).then((body)=>{
+        // remove all children
+        let child = table.lastElementChild;
+        while( child ) {
+            table.removeChild(child);
+            child = table.lastElementChild;
+        }
+
+        body.Search.forEach((data)=>{
+            table.appendChild(buildRow(data))
+        });
+        // for( let data of body.Search ) {
+        //     table.appendChild(buildRow(data));
+        // }
+        searchButton.innerText = originalText;
+        searchButton.disabled = false;
+    });
+}
