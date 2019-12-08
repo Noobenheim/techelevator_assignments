@@ -6,32 +6,32 @@
 
         <div class="well-display">
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{averageRating}}</span>
                 Average Rating
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{numberOfOneStarReviews}}</span>
                 1 Star Review
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{numberOfTwoStarReviews}}</span>
                 2 Star Review
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{numberOfThreeStarReviews}}</span>
                 3 Star Review
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{numberOfFourStarReviews}}</span>
                 4 Star Review
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{numberOfFiveStarReviews}}</span>
                 5 Star Review
             </div>
         </div>
@@ -86,6 +86,36 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        countStarReviews(reviews, stars) {
+           return reviews.reduce((acc, cur)=>{
+                return acc + (cur.rating === stars ? 1 : 0);
+            }, 0);
+        }
+    },
+    computed: {
+        numberOfOneStarReviews(vm) {
+            return vm.countStarReviews(vm.reviews, 1);
+        },
+        numberOfTwoStarReviews(vm) {
+            return vm.countStarReviews(vm.reviews, 2);
+        },
+        numberOfThreeStarReviews(vm) {
+            return vm.countStarReviews(vm.reviews, 3);
+        },
+        numberOfFourStarReviews(vm) {
+            return vm.countStarReviews(vm.reviews, 4);
+        },
+        numberOfFiveStarReviews(vm) {
+            return vm.countStarReviews(vm.reviews, 5);
+        },
+        averageRating(vm) {
+            if( vm.reviews.length === 0 ) return 0;
+            return vm.reviews.reduce((acc, cur)=>{
+                return acc + cur.rating;
+            }, 0) / vm.reviews.length;
+        }
     }
 }
 </script>

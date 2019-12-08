@@ -93,7 +93,8 @@ export default {
   name: "product-review",
   props: {
     name: String,
-    description: String
+    description: String,
+    filterText: String
   },
   data() {
     return {
@@ -115,7 +116,11 @@ export default {
     },
     filteredReviews(vm) {
       return vm.reviews.filter(review => {
-        return vm.filter === 0 ? true : vm.filter === review.rating;
+        let star = vm.filter === 0 ? true : vm.filter === review.rating;
+
+        let text = review.review.includes(this.filterText);
+
+        return star && text;
       });
     },
     numberOfOneStarReviews(vm) {

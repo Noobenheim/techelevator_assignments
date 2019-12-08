@@ -1,6 +1,7 @@
 <template>
     <form v-on:submit.prevent="handleFilter">
-        <input type="text" placeholder="Filter on..." v-model="searchText"><button>Filter</button>
+        <h3>Filter Reviews</h3>
+        <input type="text" placeholder="Filter on..." v-model="searchText" @keyup="handleFilter">
     </form>
 </template>
 
@@ -14,7 +15,7 @@ export default {
     },
     methods: {
         handleFilter() {
-            
+            this.$emit('searchFilterChange', this.searchText);
         }
     }
 }
