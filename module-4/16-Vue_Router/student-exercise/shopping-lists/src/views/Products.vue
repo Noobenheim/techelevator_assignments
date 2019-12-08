@@ -3,7 +3,9 @@
     <h1>Shop By Department</h1>
     <p>Below is a list of our departments. Please click on a department to view available products by department.</p>
     <div class="departments">
-      <!-- links to each department -->
+      <router-link v-for="department in departments" :key="department.path" :to="baseUrl+department.path" :class="department.class">
+        <img :src="require('../assets/images/' + department.banner)" />
+      </router-link>
     </div>
   </div>
 </template>
@@ -13,6 +15,7 @@ export default {
   name: "products",
   data() {
     return {
+      baseUrl: "/products",
       departments: [
         { path: '/produce', banner: 'produce_banner.png', class: 'department produce' },
         { path: '/dairy', banner: 'dairy_banner.png', class: 'department dairy' },

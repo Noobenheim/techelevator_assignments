@@ -4,7 +4,7 @@
       <div class="welcome">
         <h1>Online Grocery Shopping</h1>
         <p>Lemon drops jelly powder donut candy jelly-o chupa chups. Topping toffee gingerbread pudding. Icing tootsie roll cake lemon drops biscuit cake jelly-o marzipan cake. Carrot cake oat cake candy marzipan cupcake soufflé. Cookie caramels chupa chups wafer bear claw dragée caramels dessert. Ice cream tiramisu pastry sugar plum. Chocolate bar topping oat cake lemon drops gummi bears. Jujubes bear claw ice cream halvah cotton candy sweet. Wafer toffee lemon drops donut. Icing oat cake marshmallow pudding gingerbread dragée.</p>
-        <button>Shop By Department</button>
+        <router-link :to="{name: 'products'}" tag="button">Shop By Department</router-link>
       </div>
       <div class="cover">
         <img src="../assets/images/undraw_addtocart.png" width="100%"/>
